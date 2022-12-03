@@ -1,0 +1,61 @@
+{% extends 'home.html' %}
+
+    
+{% block contenido %}
+            
+
+<div  class="container" >
+    {% if object_list %}    
+    <div class="card">
+        <div class="card-header text-center">
+            <strong class="card-title ">Listado de equipamientos </strong>
+        </div>
+        <div class=" table-stats order-table ov-h">
+            <table class="table table-responsive">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Nombre del objeto</th>
+                        <th>Posicion en el invetario</th>
+                        <th>Categoria del objeto</th>
+                        <th>Objeto en uso</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for objeto in object_list %}
+                        <tr class="text-center">
+                            <td> {{ objeto.id }} </td>
+                            <td> {{ objeto.nombre }} </td>
+                            <td> {{ objeto.get_posicion_display }} </td>
+                            <td> {{ objeto.get_categoria_display }} </td>
+                            
+                            {% if objeto.estado == True %}
+                            <td>&#10004</td>
+                            {% else %}
+                            <td>&#x2718;</td>
+                            {% endif %}
+                                
+                            
+
+                            <td>                                
+                                <a href="{% url 'equipamientos:borrar_equipamiento' objeto.id %}" class="btn btn-danger">Eliminar</a>
+                                <a href="{% url 'equipamientos:editar_equipamiento' objeto.id %}" class="btn btn-primary">Editar</a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                        
+                </tbody>
+            </table>
+            {% block paginacion %}
+                {% include 'components/paginacion.html' %}
+            {% endblock paginacion %}
+        </div>
+    </div>
+{% else %}
+<h1><strong><b>No existen objetos registrados</b></strong></h1>
+{% endif %}
+</div>  
+{% endblock contenido %}
+    

@@ -1,0 +1,77 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block header %}
+        {% include 'components/header.html' %}
+{% endblock  %}
+    
+    
+    {% block contenido %}
+<div class="container card">
+    <div class="card-header text-center">
+        <strong >Crear Raza</strong>
+
+    </div>
+        
+    <div class="card-body card-block">
+
+        <form class="form-horizontal"  method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3">{{ form.nombre.label }}</div>
+                <div class="col-12 col-md-9">{{form.nombre}}</div>
+            </div>
+            
+                
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3">{{ form.descripcion.label }}</div>
+                <div class="col-12 col-md-9">{{form.descripcion}}</div>
+            </div>
+
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3">{{ form.dañoFisico.label }}</div>
+                <div class="col-12 col-md-9">{{form.dañoFisico}}</div>
+            </div>
+
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3">{{ form.dañoMagico.label }}</div>
+                <div class="col-12 col-md-9">{{form.dañoMagico}}</div>
+            </div>
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3">{{ form.resistFisica.label }}</div>
+                <div class="col-12 col-md-9">{{form.resistFisica}}</div>
+            </div>
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3">{{ form.resistMagica.label }}</div>
+                <div class="col-12 col-md-9">{{form.resistMagica}}</div>
+            </div>
+            <div class="row form-group mb-3">
+                <div class="col col-md-3">{{ form.imagen.label }}</div>
+                <div class="col-12 col-md-9">{{form.imagen}}</div>
+            </div>
+            
+            
+            <div class="row form-group ">
+                <div class="col col-md-3">{{ form.estado.label }}</div>
+                <div class="col-12 col-md-9">{{form.estado}}</div>
+            </div>
+            
+            
+            <div class="text-center">
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+                <a class="m-3" href="{% url 'razas:listar_raza' %}">Volver </a>
+                <button type="submit" class="btn btn-primary">Crear</button>
+
+            </div>
+            
+        </form>
+    </div>
+</div>
+        
+    {% endblock contenido %}
+            
+    
+{% block footer %}
+{% endblock footer %}
+        

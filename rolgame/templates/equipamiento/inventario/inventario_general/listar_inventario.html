@@ -1,0 +1,77 @@
+{% extends 'home.html' %}
+
+    
+{% block contenido %}
+            
+
+<div  class="container" >
+    {% if object_list %}    
+    <div class="card">
+        <div class="card-header text-center">
+            <strong class="card-title text-uppercase">Listado de tu inventario </strong>
+        </div>
+        <div class=" table-stats order-table ov-h">
+            <table class="table table-responsive">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>NOMBRE DEL PERSONAJE</th>
+                        <th>OBJETO</th>
+                        <th>CANTIDAD</th>
+                        
+                        {% if request.user.is_staff %}
+                        <th>OPCIONES</th>
+                        {% else %}
+                        <th>OPCIONES</th>
+                        {% endif %}
+                            
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for inventario in object_list %}
+                        <tr class="text-center">
+                            <td> {{ inventario.id }} </td>
+                            <td> {{ inventario.personaje.nombrePersonaje }} </td>
+                            <td> {{ inventario.objeto}}</td>
+                            <td> {{ inventario.cantidad }} </td>
+
+
+
+                            
+                            {% if request.user.is_staff %}
+                                
+                            <td>                                
+                    
+
+                            </td>
+                            {% else %}
+                            <td>
+                                <a class="btn btn-danger" href="{% url 'equipamientos:borrar_inventario' inventario.id %}">Eliminar</a>
+                                <a class="btn btn-primary" href="{% url 'equipamientos:editar_inventario' inventario.id %}">Editar</a>
+
+                            </td>
+                            {% endif %}
+
+                                
+                        </tr>
+                    {% endfor %}
+                        
+                </tbody>
+            </table>
+
+            {% block paginacion %}
+                {% include 'components/paginacion.html' %}
+            {% endblock paginacion %}
+                
+        </div>
+        <a class="p-2" href="{% url 'equipamientos:inventario' %}">Volver</a>
+
+    </div>
+{% else %}
+<h1><strong><b>No existen objetos registrados en el inventario</b></strong></h1>
+{% endif %}
+</div>  
+{% endblock contenido %}
+    

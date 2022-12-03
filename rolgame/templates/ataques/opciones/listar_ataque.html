@@ -1,0 +1,75 @@
+{% extends 'home.html' %}
+
+    
+{% block contenido %}
+            
+
+<div  class="container" >
+    {% if object_list %}    
+    <div class="card">
+        <div class="card-header text-center">
+            <strong class="card-title ">Listado de Habilidades / Poderes </strong>
+        </div>
+        <div class=" table-stats order-table ov-h">
+            <table class="table table-responsive">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>NOMBRE</th>
+                        <th>RAZA</th>
+                        <th>CATEGORIA</th>
+                        <th>DETALLE</th>
+                        <th>IMAGEN</th>
+                        <th>DAÑO FISICO</th>
+                        <th>DAÑO MAGICO</th>
+                        <th>EN USO</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ataque in object_list %}
+                        <tr class="text-center">
+                            <td> {{ ataque.id }} </td>
+                            <td> {{ ataque.nombre }} </td>
+                            <td> {{ ataque.raza }} </td>
+                            <td> {{ ataque.get_categoria_display }} </td>
+                            <td> {{ ataque.descripcion }} </td>
+
+                            {% if ataque.imagen %}
+                                <td> <img height="230" width="200" src="{{ ataque.imagen.url }}"></td>
+                            {% else %}
+                            <td>&#x2718;</td>
+                            {% endif %}
+
+                            <td> {{ ataque.daño_fisico }} </td>
+                            <td> {{ ataque.daño_magico }} </td>
+                            
+                            {% if ataque.estado %}
+                            <td> &#10004;</td>
+
+                            {% else %}
+                            <td>&#x2718;</td>
+                                
+                            {% endif %}
+                                
+
+                            <td>
+                                <a href="{% url 'ataques:borrar_ataque' ataque.id %}" class="btn btn-danger">Eliminar</a>
+                                <a href="{% url 'ataques:editar_ataque' ataque.id %}" class="btn btn-primary">Editar</a>
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                        
+                </tbody>
+            </table>
+            {% block paginacion %}
+                {% include 'components/paginacion.html' %}
+            {% endblock paginacion %}
+        </div>
+    </div>
+{% else %}
+<h1 ><strong><b>No existen ataques registrados</b></strong></h1>
+{% endif %}
+{% endblock contenido %}
+    

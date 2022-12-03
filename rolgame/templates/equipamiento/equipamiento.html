@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+
+
+{% block contenido %}
+    <h1>Equipamiento</h1>
+    <ul class=" " >
+        
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'equipamientos:crear_equipamiento' %}" class="dropdown-item">Crear equipamiento</a></li>
+        <li><a href="{% url 'equipamientos:listar_equipamiento' %}" class="dropdown-item">Listado de equipamiento</a></li>
+
+        {% endif %}
+
+        
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'equipamientos:inventario' %}" class="dropdown-item">Inventario</a></li>
+          
+        {% endif %}
+          
+      </ul>
+    </div>
+{% endblock contenido %}
+    

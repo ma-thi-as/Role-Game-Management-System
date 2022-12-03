@@ -1,0 +1,57 @@
+{% extends 'home.html' %}
+{% load static %}
+
+{% block header %}
+        {% include 'components/header.html' %}
+{% endblock  %}
+    
+    
+    {% block contenido %}
+<div class="container card">
+    <div class="card-header text-center">
+        <strong >Añadir objeto al inventario</strong>
+
+    </div>
+        
+    <div class="card-body card-block">
+
+        <form class="form-horizontal"  method="post" enctype="multipart/form-data" >
+            {% csrf_token %}
+
+
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3" >{{ form.personaje.label }}</div>
+                <div class="col-12 col-md-9">{{form.personaje}}</div>
+            </div>
+
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3" >{{ form.objeto.label }}</div>
+                <div class="col-12 col-md-9">{{form.objeto}}</div>
+            </div>
+
+
+
+            <div class="row mb-3 form-group">
+                <div class="col col-md-3">{{ form.cantidad.label }}</div>
+                <div class="col-12 col-md-9">{{form.cantidad}}</div>
+            </div>
+
+
+            <div class="text-center">
+                <button type="reset" class="btn btn-danger">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Crear</button>
+
+            </div>
+
+            <a href="{% url 'equipamientos:inventario' %}">Volver </a>
+        </form>
+    </div>
+</div>
+        
+    {% endblock contenido %}
+            
+    
+    {% block footer %}
+        
+    {% endblock footer %}
+        

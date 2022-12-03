@@ -1,0 +1,19 @@
+{% extends 'home.html' %}
+
+{% block contenido %}
+    <h1>Raza</h1>
+    <ul class=" " >
+        
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'razas:crear_raza' %}" class="dropdown-item">Crear raza</a></li>
+        <li><a href="{% url 'razas:listar_raza' %}" class="dropdown-item">Listado de razas</a></li>
+
+
+
+        {% else %}
+        <li><p>No tienes permisos </p></li>
+        {% endif %}
+      </ul>
+    </div>
+{% endblock contenido %}
+    

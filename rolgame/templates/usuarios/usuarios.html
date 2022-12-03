@@ -1,0 +1,19 @@
+{% extends 'home.html' %}
+
+{% block contenido %}
+    <h1>Usuarios</h1>
+    <ul class=" " >
+        
+        {% if request.user.is_staff %}
+        <li><a href="{% url 'usuarios:registrar_usuario' %}" class="dropdown-item">Crear usuario</a></li>
+        <li><a href="{% url 'usuarios:listar_usuarios' %}" class="dropdown-item">Listado de usuarios</a></li>
+
+
+
+        {% else %}
+        <li><p>No tienes permisos </p></li>
+        {% endif %}
+      </ul>
+    </div>
+{% endblock contenido %}
+    

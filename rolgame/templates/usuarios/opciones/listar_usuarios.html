@@ -1,0 +1,78 @@
+{% extends 'home.html' %}
+
+    
+{% block contenido %}
+            
+
+<div  class="container" >
+    {% if object_list %}    
+    <div class="card">
+        <div class="card-header text-center">
+            <strong class="card-title ">Listado de usuarios </strong>
+        </div>
+        <div class=" table-stats order-table ov-h">
+            <table class="table table-responsive">
+                <thead>
+                    <tr class="text-center">
+                        <th>ID</th>
+                        <th>Nombre del usuario</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Rol</th>
+                        <th>Privilegios administrador</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for usuario in object_list %}
+                        <tr class="text-center">
+                            <td> {{ usuario.id }} </td>
+                            <td> {{ usuario.username }} </td>
+                            <td> {{ usuario.nombre }} </td>
+                            <td> {{ usuario.apellido }} </td>
+                            <td> {{ usuario.type }} </td>
+                            
+                            {% if usuario.is_superuser %}
+                            <!-- CHECK ICON CON CODE HTML -->
+                            <td> &#10004;</td>
+                            {% else %}
+                            <!-- X ICON CON CODE HTML -->
+                            <td>&#x2718;</td>
+                            {% endif %}
+                            
+                                
+
+                            
+                    {% if request.user.is_superuser %}
+
+                            <td>                                
+                                <a href="{% url 'usuarios:editar_usuario' usuario.id %}" class="btn btn-primary">Editar</a>
+
+                            </td>
+                    {% else %}
+                            <td ><p class="alert alert-danger" role="alert">No tienes permisos contacte al admin</p></td>
+                            
+                        </tr>
+                    {% endif %}
+
+                    {% endfor %}
+
+
+                        
+                        
+                </tbody>
+            </table>
+
+            {% block paginacion %}
+                {% include 'components/paginacion.html' %}
+            {% endblock paginacion %}
+                
+            
+    </div>
+    
+{% else %}
+<h1><strong><b>No existen usuarios registrados</b></strong></h1>
+{% endif %}
+</div>  
+{% endblock contenido %}
+    

@@ -1,0 +1,28 @@
+{% extends 'home.html' %}
+
+{% block header %}
+    
+{% endblock header %}
+    
+{% block contenido %}
+    
+<div class="d-flex justify-content-center  bg-dark text-light" style="width: 100%; height: 100vh">
+    <div class="align-self-center text-center">
+
+        <form method="post" class="text-light">
+            {% csrf_token %}
+            <p class="alert alert-warning"><strong>¿Desea eliminar el registro {{ object }}?</strong></p>
+            <button type="submit" class="btn btn-danger mb-3">Confirmar</button>
+        </form>
+        <a href="{% url 'equipamientos:listar_equipamiento' %}">Volver al listado </a>
+        
+    </div>
+
+</div>
+{% endblock contenido %}
+    
+
+{% block footer %}
+    
+{% endblock footer %}
+    

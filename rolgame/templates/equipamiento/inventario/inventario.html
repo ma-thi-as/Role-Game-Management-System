@@ -1,0 +1,32 @@
+{% extends 'home.html' %}
+
+
+{% block contenido %}
+<div class="w-100 d-flex justify-content-center text-uppercase">
+  <h1>Inventario</h1>
+</div>
+    <ul class="">
+        
+        {% if request.user.is_authenticated %}
+        <div>
+          <h4>Inventario </h4>
+          <li><a href="{% url 'equipamientos:crear_inventario' %}" class="dropdown-item"><i>Añadir objeto al inventario</i></a></li>
+          <li><a href="{% url 'equipamientos:listar_inventario' %}" class="dropdown-item"><i>Listado de objetos en inventario</i></a></li>
+          
+        </div><hr>
+        <div>
+          <h4>Habilidades / Poderes</h4>
+
+          <li><a href="{% url 'equipamientos:crear_inventario_especial' %}" class="dropdown-item"><i>Añadir habilidades o poderes al inventario</i></a></li>
+          <li><a href="{% url 'equipamientos:listar_inventario_especial' %}" class="dropdown-item"><i>Listado de habilidades y poderes</i></a></li>
+  
+        </div>
+        {% else %}
+        <li><p>No tienes permisos </p></li>
+        {% endif %}
+        
+        
+      </ul>
+    </div>
+{% endblock contenido %}
+    

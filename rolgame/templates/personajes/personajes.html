@@ -1,0 +1,24 @@
+{% extends 'home.html' %}
+
+
+{% block contenido %}
+    <h1>Personajes</h1>
+    <ul class=" " >
+        
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'personajes:crear_personaje' %}" class="dropdown-item">Crear personaje</a></li>
+        <li><a href="{% url 'personajes:listar_personaje' %}" class="dropdown-item">Listado de personajes</a></li>
+        <li><a href="{% url 'equipamientos:inventario' %}" class="dropdown-item">Inventario</a></li>
+
+
+
+        {% else %}
+        <li><p>No tienes permisos </p></li>
+        {% endif %}
+          
+        
+        
+      </ul>
+    </div>
+{% endblock contenido %}
+    

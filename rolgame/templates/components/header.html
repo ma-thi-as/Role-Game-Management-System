@@ -1,0 +1,60 @@
+{% load static %}
+{% block header %}
+<div class="header ">
+  <div class="header-sup">
+    <h1><a style="text-decoration: none; color:white;" href="{% url 'index' %}">Inapsius Caption</a></h1>
+  </div>
+    
+  {% if user.last_login %}  
+  {% if user.is_superuser%}
+  <p class="m-3 text-center" > ADMIN {{user.username}} <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" fill="lightgreen">
+          <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+  </svg></p>
+            
+  {% else %}          
+                            
+    <p class="m-3 text-center">  {{ user.type }} {{user.username}} <svg xmlns="http://www.w3.org/2000/svg" width="20" viewBox="0 0 20 20" fill="lightgreen">
+      <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
+    </svg></p>
+  {% endif %}
+        
+  {% endif %}
+    <div>
+
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-warning dropdown-toggle bg-dark text-light" data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'img/icon.png' %}" width="30">
+        </button>
+        <ul class="dropdown-menu " >
+          <li><a class="dropdown-item  text-primary" href="{% url 'index' %}">Inicio</a></li>
+          
+          
+          {% if request.user.is_staff %}
+          <li><a href="{% url 'razas:raza' %}" class="dropdown-item">Razas</a></li>
+          <li><a href="{% url 'ataques:ataque' %}" class="dropdown-item">Ataque</a></li>
+          <li><a href="{% url 'personajes:estado' %}" class="dropdown-item">Estados</a></li>
+          <li><a href="{% url 'usuarios:usuarios' %}" class="dropdown-item">Usuarios</a></li>
+          <li><a href="{% url 'personajes:personaje' %}" class="dropdown-item">Personajes</a></li>
+          <li><a href="{% url 'equipamientos:equipamiento' %}" class="dropdown-item">Equipamiento</a></li>
+          <li><a href="{% url 'logout' %}"  class="dropdown-item" style="color: red;">Cerrar sesión</a></li>
+
+
+
+          {% else %}
+          {% if  request.user.is_authenticated %}
+          <li><a href="{% url 'personajes:personaje' %}" class="dropdown-item">Personajes</a></li>
+          <li><a href="{% url 'logout' %}" class="dropdown-item" style="color: red;">Cerrar sesión</a></li>
+          {% else %}
+          <li><a class="dropdown-item" href="{% url 'usuarios:registrar_usuario' %}">Registrarse</a></li>
+          <li><a class="dropdown-item" href="{% url 'login' %}">Iniciar sesion</a></li>
+          {% endif %}
+          {% endif %}
+        </ul>
+      </div>
+     
+</div>
+
+
+{% endblock  %}
+    
