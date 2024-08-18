@@ -1,5 +1,5 @@
 # Rol Game System
-Rol game project with djnago, for the managment of characters and accounts. With different levels of user permissions and functions.
+Role game project with django, for the creation and managment of characters and accounts. With different levels of user permissions and functions based on role of the user.
 
 
 
