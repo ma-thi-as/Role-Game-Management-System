@@ -31,7 +31,8 @@ Follow the 'Manual_Instalacion_Y_Utilizacion.pdf' instructions or
 
 
 ## Demo
-![Uploading simplescreenrecorder-2024-08-18_12.36.58-ezgif.com-speed(1).gif…]()
+![simplescreenrecorder-2024-08-18_12 36 58-ezgif com-speed(1)](https://github.com/user-attachments/assets/9b205d5d-7c0c-4df5-8147-1c3db401eaca)
+
 
 
 
