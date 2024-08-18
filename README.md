@@ -16,7 +16,7 @@ Rol game project with djnago, for the managment of characters and accounts. With
 
 Follow the 'Manual_Instalacion_Y_Utilizacion.pdf' instructions or 
 ```bash
-  git clone [git@github.com:ma-thi-as/Sistema_Juego_de_Rol.git](https://github.com/ma-thi-as/Sistema_Juego_de_Rol.git)
+  git clone https://github.com/ma-thi-as/Sistema_Juego_de_Rol.git
   cd Sistema_Juego_de_Rol
 
 ```
