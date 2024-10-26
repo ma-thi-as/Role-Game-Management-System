@@ -40,7 +40,7 @@ The project consists of several Django applications:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/ma-thi-as/Sistema_Juego_de_Rol.git
+git https://github.com/ma-thi-as/Role-Game-Management-System
 cd Sistema_Juego_de_Rol
 ```
 
