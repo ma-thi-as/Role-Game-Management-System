@@ -1,40 +1,94 @@
-# Rol Game System
-Role game project with django, for the creation and managment of characters and accounts. With different levels of user permissions and functions based on role of the user.
+# Role Game Management System
 
+A comprehensive Django-based role-playing game management system that facilitates character creation and game administration through distinct user roles: Players and Game Masters.
 
+## 🎮 Features
 
-## Dependencies
+### Player Features
+- Character creation and management
+- Race selection
+- Skill configuration
+- Equipment management
+- Character stats and parameters customization
 
- - [Django]()
- - [django-environ]()
- - [Pillow]()
- - [Virtualenv]()
+### Game Master Features
+- User profile administration
+- Game characteristics management
+- Character oversight
+- Equipment and inventory control
+- Combat system administration
 
+## 🏗️ Project Structure
 
+The project consists of several Django applications:
 
-## Installation
+- **usuarios**: User management and authentication
+- **personajes**: Character creation and management
+- **raza**: Race definitions and characteristics
+- **equipamientos**: Equipment and inventory system
+- **ataques**: Combat system and attack management
 
-Follow the 'Manual_Instalacion_Y_Utilizacion.pdf' instructions or 
+## 🔧 Dependencies
+
+- Python 3.x
+- Django
+- django-environ
+- Pillow
+- Virtualenv
+
+## ⚙️ Installation
+
+1. Clone the repository:
 ```bash
-  git clone https://github.com/ma-thi-as/Sistema_Juego_de_Rol.git
-  cd Sistema_Juego_de_Rol
-
+git clone https://github.com/ma-thi-as/Sistema_Juego_de_Rol.git
+cd Sistema_Juego_de_Rol
 ```
 
-```Python
-  python -m venv .venv
-  source .env/bin/activate
-  pip install -r requerimientos.txt
-  cd rolgame
-  python manage.py runserver
+2. Create and activate virtual environment:
+```bash
+python -m venv .venv
+source .venv/bin/activate  # On Windows use: .venv\Scripts\activate
 ```
 
+3. Install required packages:
+```bash
+pip install -r requerimientos.txt
+```
 
-## Demo
-![simplescreenrecorder-2024-08-18_12 36 58-ezgif com-speed(1)](https://github.com/user-attachments/assets/9b205d5d-7c0c-4df5-8147-1c3db401eaca)
+4. Navigate to the project directory and run migrations:
+```bash
+cd rolgame
+python manage.py migrate
+```
 
+5. Start the development server:
+```bash
+python manage.py runserver
+```
 
+The application will be available at `http://localhost:8000`
 
+## 🚀 Getting Started
 
+1. Register a new account
+2. Log in with your credentials
+3. Choose your role (Player by default, use createsuperuser command for create a game master role)
+4. If you're a player:
+   - Create a new character
+   - Choose a race
+   - Assign skills and attributes
+   - Manage your equipment
+5. If you're a Game Master:
+   - Manage user profiles
+   - Override character settings
+   - Control game parameters
+   - Manage combat scenarios
 
-    
+## 🔐 Security
+
+- Role-based access control
+- Secure authentication system
+- Protected API endpoints
+- User data encryption
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
